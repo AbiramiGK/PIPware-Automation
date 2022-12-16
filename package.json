@@ -1,0 +1,25 @@
+{
+  "name": "pipwaredemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules\\.bin\\cypress run",
+    "headedMode": "npm run test -- --save-dev --headed",
+    "ChromeTest": "npm run test -- --browser chrome",
+    "RecordDashBoardTest": "npx cypress run --record --key 45f98267-1cd8-494a-a5a0-bd723342879d --headed --browser chrome"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.0.0",
+    "@cypress/browserify-preprocessor": "latest"
+  },
+  "devDependencies": {
+    "cypress": "^12.1.0",
+    "cypress-iframe": "^1.0.1",
+    "mocha": "^10.1.0",
+    "mochawesome": "^7.1.3",
+    "neat-csv": "5.1.0"
+  }
+}
