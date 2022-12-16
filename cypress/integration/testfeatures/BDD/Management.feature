@@ -1,6 +1,6 @@
 Feature: PIPware application Automation for Management Module
 
-  @Smoke
+  @Ignore
   Scenario: Management  >> Meetings >> Verify to schedule meeting-ADD
   Given Login to the application
   When Provide the Username and Password for login
