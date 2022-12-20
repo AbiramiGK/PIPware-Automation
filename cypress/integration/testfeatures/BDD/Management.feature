@@ -1,10 +1,20 @@
 Feature: PIPware application Automation for Management Module
 
-  @Ignore
+  @Smoke
   Scenario: Management  >> Meetings >> Verify to schedule meeting-ADD
   Given Login to the application
   When Provide the Username and Password for login
   When Navigate to Management  tab and select Meetings
   When Click ADD button and provide information under details part and save
-  When Click FILTER button and provide a filter value to view the  filtered meeting
-  Then Click on series tab to view them in series mode, click again to view in calender mode
+  #When Click FILTER button and provide a filter value to view the  filtered meeting
+  #Then Click on series tab to view them in series mode, click again to view in calender mode
+
+  @Ignore
+  Scenario: Management  >> RARS >> Reviewer can be selected for the result action
+  Given Login to the application
+  When Provide the Username and Password for login
+  When Navigate to Management  tab and select RARS
+  When Click icon and try adding the reviewer details and do save
+  #Then Provide Results, KPIs, Initiatives, Resources, reports, Actions and Review information
+  
+

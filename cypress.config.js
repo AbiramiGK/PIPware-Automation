@@ -18,7 +18,7 @@ module.exports = defineConfig({
   projectId: '6gq8o2',
   e2e: {
     setupNodeEvents,
-    //specPattern:'cypress/integration/testfeatures/BDD/*.feature'
-    specPattern:'cypress/integration/testfeatures/BDD/Management.feature'
+    specPattern:'cypress/integration/testfeatures/BDD/Initiatives.feature'
+    //specPattern:'cypress/integration/testfeatures/BDD/Management.feature'
   },
 });

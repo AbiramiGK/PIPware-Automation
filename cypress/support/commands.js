@@ -3,11 +3,14 @@
 import KPI from "../integration/testfeatures/BDD/PageObject/KPI"
 import Initiatives from "../integration/testfeatures/BDD/PageObject/Initiatives"
 import HomePage from "../integration/testfeatures/BDD/PageObject/HomePage"
+import Management from "../integration/testfeatures/BDD/PageObject/Management"
 
 
 const KPIObject = new KPI()
 const initiativesObject = new Initiatives()
 const homePageObject = new HomePage()
+const ManagementObject = new Management()
+
 // This example commands.js shows you how to
 // create various custom commands and overwrite
 // existing commands.
@@ -27,6 +30,8 @@ const homePageObject = new HomePage()
 // Cypress.Commands.add("Password",(Password)=>{
 //     cy.get("#password").type(Password)
 // })
+
+
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from
@@ -150,6 +155,30 @@ Cypress.Commands.add("BottomTOPVerify",()=>{
   initiativesObject.getbackbutton().click()
   initiativesObject.getTopup().click()
   initiativesObject.getBottomtopverify().should('contain',"Top ")
+})
+
+Cypress.Commands.add("SelectMeetings",()=>{
+    homePageObject.getManagement().click()
+    ManagementObject.getMeetings().click()
+})
+
+Cypress.Commands.add("AddMeeting",()=>{
+  ManagementObject.getMeetingAdd().click()
+  ManagementObject.getMeetingTitle().type("DemoMeeting")
+  ManagementObject.getPurpose().type("Team Update")
+  ManagementObject.getPayOff().type("PayOff")
+  ManagementObject.getDescription().type("Status Update of each person will be 5 minutes")
+ 
+
+})
+
+Cypress.Commands.add("AddDetails",()=>{
+  cy.get('.k-link.k-header.k-state-selected').click()
+  ManagementObject.getdatedetails().type("2022/12/17")
+  cy.get('[class="button-text"]').click()
+  //
+ 
+
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => {
