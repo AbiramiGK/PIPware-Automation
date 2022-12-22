@@ -15,10 +15,10 @@ async function setupNodeEvents(on, config) {
 
 //const cucumber = require("cypress-cucumber-preprocessor").default
 module.exports = defineConfig({
-  projectId: '6gq8o2',
+  projectId: 'pxu1su',
   e2e: {
     setupNodeEvents,
-    specPattern:'cypress/integration/testfeatures/BDD/Initiatives.feature'
-    //specPattern:'cypress/integration/testfeatures/BDD/Management.feature'
+    //specPattern:'cypress/integration/testfeatures/BDD/*.feature'
+    specPattern:'cypress/integration/testfeatures/BDD/Portfolios.feature'
   },
 });
