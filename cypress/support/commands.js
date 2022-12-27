@@ -4,12 +4,14 @@ import KPI from "../integration/testfeatures/BDD/PageObject/KPI"
 import Initiatives from "../integration/testfeatures/BDD/PageObject/Initiatives"
 import HomePage from "../integration/testfeatures/BDD/PageObject/HomePage"
 import Management from "../integration/testfeatures/BDD/PageObject/Management"
+import Portfolios from "../integration/testfeatures/BDD/PageObject/Portfolios"
 
 
 const KPIObject = new KPI()
 const initiativesObject = new Initiatives()
 const homePageObject = new HomePage()
 const ManagementObject = new Management()
+const portfoliosObject = new Portfolios()
 
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -173,12 +175,63 @@ Cypress.Commands.add("AddMeeting",()=>{
 })
 
 Cypress.Commands.add("AddDetails",()=>{
-  cy.get('.k-link.k-header.k-state-selected').click()
-  ManagementObject.getdatedetails().type("2022/12/17")
-  cy.get('[class="button-text"]').click()
-  //
+  ManagementObject.getpanel().contains('Details').click()
+  ManagementObject.getstartDate().type("2022/12/21")
+  ManagementObject.getStartTime().type("12")
+  ManagementObject.getStartTime().type('{enter}')
+  ManagementObject.getDuration().type("1")
+  ManagementObject.getDuration().type('{enter}')
+  ManagementObject.getReminder().type("15")
+  ManagementObject.getReminder().type('{enter}')
+  ManagementObject.getLocation().type('Online')
+  ManagementObject.getTimeZone().type("Chennai")
+  ManagementObject.getTimeZone().type('{enter}')
+  ManagementObject.getReoccurance().find('.k-radio-label').each(($e1,index,$list)=>{
+    const occurance = $e1.text()
+    cy.log($e1.text())
+      if(occurance == "Once off"){
+          cy.wrap($e1).click({force:true})
+      }
+  })
+
+  //settings
+
+  ManagementObject.getpanel().contains('Settings').click()
+  ManagementObject.getCategories().type("Default")
+  ManagementObject.getCategories().type('{enter}')
+  //ManagementObject.getMeetingQues().type("Def")
+  ManagementObject.getMeetingQues().type('Def{enter}')
+  ManagementObject.getSaveButton().click()
+  ManagementObject.getCOnfirmation().click()
+
+
  
 
+})
+
+Cypress.Commands.add("RARADMINFIlter",()=>{
+  
+  ManagementObject.getRARAdminReviewer().click()
+  ManagementObject.getRARAdminReviewer().type("Sami")
+  ManagementObject.getRARAdminReviewer().type('{enter}')
+
+  ManagementObject.getRARAdminReviewee().click()
+  ManagementObject.getRARAdminReviewee().type("Sami")
+  ManagementObject.getRARAdminReviewee().type('{enter}')
+
+  ManagementObject.getRARAdminFilter().click()
+
+  //verification
+  ManagementObject.getRARAdminverify().should('contain','Sami')
+ 
+
+})
+
+Cypress.Commands.add("PortfoliosVerify",()=>{
+  portfoliosObject.getLeftTopView().click()
+  portfoliosObject.getinfounderTopView().should('have.text',"PortfolioRisks Escalated")
+  portfoliosObject.geInfounderTopViewTwo().should('have.text'," Information")
+  portfoliosObject.getInfoOfSite().should('have.text',"DBIZ PMO")
 })
 
 Cypress.on('uncaught:exception', (err, runnable) => {
