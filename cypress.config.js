@@ -16,6 +16,7 @@ async function setupNodeEvents(on, config) {
 //const cucumber = require("cypress-cucumber-preprocessor").default
 module.exports = defineConfig({
   projectId: 'pxu1su',
+  reporter: 'mochawesome',
   e2e: {
     setupNodeEvents,
     //specPattern:'cypress/integration/testfeatures/BDD/*.feature'
