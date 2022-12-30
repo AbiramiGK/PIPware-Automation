@@ -1,5 +1,12 @@
 name: End-to-end tests
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule: ## Schedule the job to run at 12.am daily.
+    - cron: '19 19 30 12 *'
+
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
